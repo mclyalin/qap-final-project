@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import AuthLocators
+from pages.locators import AuthPageLocators
 from settings import Settings
 
 
@@ -9,5 +9,5 @@ class AuthPage(BasePage):
         url = Settings.auth_page_url
         super().__init__(web_driver, url)
 
-        self.page_right = self.find_element(AuthLocators.page_right)
-        self.page_left = self.find_element(AuthLocators.page_left)
+        self.right_section = self.find_element(AuthPageLocators.right_section)
+        self.left_section = self.find_element(AuthPageLocators.left_section)
