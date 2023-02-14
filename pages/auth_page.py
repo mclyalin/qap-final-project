@@ -21,7 +21,6 @@ class AuthPage(WebPage):
         self.submit_button.click()
 
     right_section = WebElement(id='page-right')
-    left_section = WebElement(id='page-left')
 
     form = WebElement(css_selector='.login-form-container form.login-form')
     form_title = WebElement(css_selector='.login-form-container h1')
