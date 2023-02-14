@@ -9,7 +9,7 @@ class AuthPage(WebPage):
 
     def __init__(self, web_driver, url=''):
         if not url:
-            url = os.getenv("MAIN_URL") or Settings.auth_page_url
+            url = os.getenv("MAIN_URL") or Settings.base_url
 
         super().__init__(web_driver, url)
 
