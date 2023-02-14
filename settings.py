@@ -32,3 +32,4 @@ class Expected:
 
 class RegPageExpected:
     form_title_text = "Регистрация"
+    # https://b2c.passport.rt.ru/sso-static/agreement/agreement.html
