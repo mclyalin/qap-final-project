@@ -1,71 +1,78 @@
+import pytest
+
 from pages.auth_page import AuthPage
-from settings import Expected
+from settings import Settings, Expected
 
 
-# def test_page_right(web_browser):
-#     """TC-01 В правой части формы «Авторизация» находится продуктовый слоган ЛК "Ростелеком ID"."""
-#     page = AuthPage(web_browser)
+def test_page_right_section(web_browser):
+    """TC-01 В правой части формы «Авторизация» находится продуктовый слоган ЛК "Ростелеком ID"."""
 
-#     assert Expected.slogan_text in page.right_section.get_text()
+    page = AuthPage(web_browser)
 
-
-# def test_elements_of_auth(web_browser):
-#     """TC-02 Блок аутентификации формы «Авторизация» содержит основные элементы (Меню выбора типа аутентификации,
-#     Поля ввода, кнопка "Войти", ссылки "Забыл пароль" и "Зарегистрироваться")."""
-#     page = AuthPage(web_browser)
-
-#     assert page.form.is_visible()
-#     assert page.form_title.get_text() == 'Авторизация'
-#     assert page.auth_type_menu.is_visible()
-#     assert page.input_username.is_clickable()
-#     assert page.input_password.is_clickable()
-#     assert page.submit_button.is_clickable()
-#     assert page.submit_button.get_text() == 'Войти'
-#     assert page.forgot_password_link.is_clickable()
-#     assert page.forgot_password_link.get_text() == 'Забыл пароль'
-#     assert page.register_link.is_clickable()
-#     assert page.register_link.get_text() == 'Зарегистрироваться'
+    assert Expected.slogan_text in page.right_section.get_text()
 
 
-# def test_menu_of_type_auth(web_browser):
-#     """TC-03 Меню выбора типа аутентификации содержит табы: 'Номер', 'Почта', 'Логин', 'Лицевой счёт'."""
-#     page = AuthPage(web_browser)
+def test_auth_form_elements(web_browser):
+    """TC-02 Форма «Авторизация» содержит основные элементы: Выбор типа аутентификации, Поля ввода, кнопка "Войти", ссылки "Забыл пароль" и "Зарегистрироваться")."""
 
-#     tab_names = page.auth_type_menu_tabs.get_text()
-#     assert tab_names == Expected.tab_names
+    page = AuthPage(web_browser)
+
+    assert page.form.is_visible()
+    assert page.form_title.get_text() == Expected.form_title_text
+    assert page.auth_select_menu.is_visible()
+    assert page.input_username.is_clickable()
+    assert page.input_password.is_clickable()
+    assert page.submit_button.is_clickable()
+    assert page.submit_button.get_text() == Expected.submit_button_name
+    assert page.forgot_password_link.is_clickable()
+    assert page.forgot_password_link.get_text() == Expected.forgot_password_link_text
+    assert page.register_link.is_clickable()
+    assert page.register_link.get_text() == Expected.register_link_text
 
 
-# def test_menu_of_type_active_auth(web_browser):
-#     """TC-04 В Меню выбора типа аутентификации по умолчанию выбрана форма аутентификации по телефону."""
-#     page = AuthPage(web_browser)
+def test_auth_select_menu_tabs(web_browser):
+    """TC-03 Меню выбора типа аутентификации содержит табы: 'Номер', 'Почта', 'Логин', 'Лицевой счёт'."""
 
-#     phone_tab_class = page.phone_tab.get_attribute('class')
-#     assert 'active' in phone_tab_class
+    page = AuthPage(web_browser)
+    tab_names = page.auth_select_menu_tabs.get_text()
+
+    assert tab_names == Expected.tab_names
 
 
-# def test_placeholder_name_of_user(web_browser):
-#     """TC-05 В форме ввода ('Номер', 'Почта', 'Логин', 'Лицевой счёт') плейсхолдер меняется в соответствии с
-#     выбранным табом Меню."""
-#     page = AuthPage(web_browser)
+def test_menu_active_tab_by_default(web_browser):
+    """TC-04 В Меню выбора типа аутентификации по умолчанию выбрана форма аутентификации по телефону."""
 
-#     page.phone_tab.click()
-#     assert page.input_username_placeholder.get_text() == 'Мобильный телефон'
+    page = AuthPage(web_browser)
+    phone_tab_class = page.phone_tab.get_attribute('class')
 
-#     page.email_tab.click()
-#     assert page.input_username_placeholder.get_text() == 'Электронная почта'
+    assert 'active' in phone_tab_class
 
-#     page.login_tab.click()
-#     assert page.input_username_placeholder.get_text() == 'Логин'
 
-#     page.ls_tab.click()
-#     assert page.input_username_placeholder.get_text() == 'Лицевой счёт'
+def test_username_placeholder_changes(web_browser):
+    """TC-05 В поле ввода username плейсхолдер меняется в соответствии с выбранным табом Меню."""
 
-# def test_forgot_password_link(web_browser):
-#     """TC-06 Проверка перехода по ссылке 'Забыл пороль'."""
-#     page = AuthPage(web_browser)
+    page = AuthPage(web_browser)
 
-#     page.forgot_password_link.click()
-#     assert page.get_relative_path() == '/auth/realms/b2c/login-actions/reset-credentials'
+    page.phone_tab.click()
+    assert page.input_username_placeholder.get_text() == Expected.phone_placeholder_text
+
+    page.email_tab.click()
+    assert page.input_username_placeholder.get_text() == Expected.email_placeholder_text
+
+    page.login_tab.click()
+    assert page.input_username_placeholder.get_text() == Expected.login_placeholder_text
+
+    page.ls_tab.click()
+    assert page.input_username_placeholder.get_text() == Expected.ls_placeholder_text
+
+
+def test_forgot_password_link(web_browser):
+    """TC-06 Проверка перехода по ссылке 'Забыл пороль'."""
+
+    page = AuthPage(web_browser)
+    page.forgot_password_link.click()
+
+    assert page.get_relative_path() == Settings.restore_password_page_path
 
 
 def test_register_link(web_browser):
@@ -74,4 +81,53 @@ def test_register_link(web_browser):
     page = AuthPage(web_browser)
     page.register_link.click()
 
-    assert page.get_relative_path() == '/auth/realms/b2c/login-actions/registration'
+    assert page.get_relative_path() == Settings.register_page_path
+
+
+@pytest.mark.xfail(reason="Тест может упасть из-за появления капчи")
+def test_sign_in_by_valid_user(web_browser):
+    """TC-08 Аутентификация с валидными email и паролем."""
+
+    page = AuthPage(web_browser)
+    page.sign_in(Settings.valid_email, Settings.valid_password)
+
+    assert page.get_relative_path() == Settings.user_account_page_path
+
+
+@pytest.mark.xfail(reason="Тест может упасть из-за появления капчи")
+def test_sign_in_by_unknown_user(web_browser):
+    """TC-09 Аутентификация незарегистрированного пользователя"""
+
+    page = AuthPage(web_browser)
+    page.sign_in(Settings.unknown_email, Settings.valid_password)
+
+    assert page.get_relative_path() == Settings.sign_in_error_path
+    assert page.sign_in_error.get_text() == Expected.sign_in_error_text
+    page.sign_in(Settings.valid_email, Settings.valid_password)
+
+
+def test_sign_in_by_blank_fields(web_browser):
+    """TC-10 Аутентификация с пустыми полями"""
+
+    page = AuthPage(web_browser)
+    blank = ""
+
+    page.phone_tab.click()
+    page.sign_in(blank, blank)
+    assert page.get_relative_path() == Settings.auth_page_path
+    assert page.input_username_error.get_text() == Expected.phone_error_text
+
+    page.email_tab.click()
+    page.sign_in(blank, blank)
+    assert page.get_relative_path() == Settings.auth_page_path
+    assert page.input_username_error.get_text() == Expected.email_error_text
+
+    page.login_tab.click()
+    page.sign_in(blank, blank)
+    assert page.get_relative_path() == Settings.auth_page_path
+    assert page.input_username_error.get_text() == Expected.login_error_text
+
+    page.ls_tab.click()
+    page.sign_in(blank, blank)
+    assert page.get_relative_path() == Settings.auth_page_path
+    assert page.input_username_error.get_text() == Expected.ls_error_text
