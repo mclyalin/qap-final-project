@@ -31,4 +31,4 @@ class Expected:
 
 
 class RegPageExpected:
-    pass
+    form_title_text = "Регистрация"

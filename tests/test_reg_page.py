@@ -10,9 +10,6 @@ def test_page_left_registration(web_browser):
     page = RegPage(web_browser)
     page.open()
 
-    assert page.get_relative_path() == Settings.register_page_path
-    # try:
-    #     page_reg = RegistrPage(selenium)
-    #     assert page_reg.page_left_registration.text != ''
-    # except AssertionError:
-    #     print('Элемент отсутствует в левой части формы')
+    blank = ""
+    assert page.left_section.get_text() is not blank
+
