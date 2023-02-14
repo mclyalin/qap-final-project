@@ -1,5 +1,5 @@
 class Settings:
-    auth_page_url = "https://b2c.passport.rt.ru"
+    base_url = "https://b2c.passport.rt.ru"
     auth_page_path = "/auth/realms/b2c/protocol/openid-connect/auth"
     sign_in_error_path = "/auth/realms/b2c/login-actions/authenticate"
     user_account_page_path = "/account_b2c/page"
@@ -29,3 +29,6 @@ class Expected:
     login_error_text = "Введите логин, указанный при регистрации"
     ls_error_text = "Введите номер вашего лицевого счета"
 
+
+class RegPageExpected:
+    pass
