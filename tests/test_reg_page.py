@@ -125,7 +125,7 @@ def test_modal_link_redirect_to_restore_page(web_browser):
 
 @pytest.mark.parametrize("name", settings.valid_names.values(), ids=settings.valid_names.keys())
 def test_first_name_by_valid_data(web_browser, name):
-    """TC-18 Форма «Регистрация»: проверка поля "Имя" валидными данными (кириллица длиной 2,3,15,29,30, имя с тире)."""
+    """TC-18 Форма «Регистрация» поле "Имя": позитивная проверка (кириллица длиной 2,3,15,29,30, имя с тире)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -137,7 +137,7 @@ def test_first_name_by_valid_data(web_browser, name):
 
 @pytest.mark.parametrize("name", settings.valid_names.values(), ids=settings.valid_names.keys())
 def test_last_name_by_valid_data(web_browser, name):
-    """TC-18_1 Форма «Регистрация»: проверка поля "Фамилия" валидными данными (кириллица длиной 2,3,15,29,30, имя с тире)."""
+    """TC-18_1 Форма «Регистрация» поле "Фамилия": позитивная проверка (кириллица длиной 2,3,15,29,30, имя с тире)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -149,7 +149,7 @@ def test_last_name_by_valid_data(web_browser, name):
 
 @pytest.mark.parametrize("name", settings.invalid_names.values(), ids=settings.invalid_names.keys())
 def test_first_name_by_invalid_data(web_browser, name):
-    """TC-19 Форма «Регистрация»: проверка поля "Имя" невалидными данными (кириллица длиной 1,31,500, латиница,иероглифы,спецсимволы,числа)."""
+    """TC-19 Форма «Регистрация» поле "Имя": негативный тест (кириллица длиной 1,31,500, латиница,иероглифы,спецсимволы,числа)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -162,7 +162,7 @@ def test_first_name_by_invalid_data(web_browser, name):
 
 @pytest.mark.parametrize("name", settings.invalid_names.values(), ids=settings.invalid_names.keys())
 def test_last_name_by_invalid_data(web_browser, name):
-    """TC-19_1 Форма «Регистрация»: проверка поля "Фамилия" невалидными данными (кириллица длиной 1,31,500, латиница,иероглифы,спецсимволы,числа)."""
+    """TC-19_1 Форма «Регистрация» поле "Фамилия": негативный тест (кириллица длиной 1,31,500, латиница,иероглифы,спецсимволы,числа)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -175,7 +175,7 @@ def test_last_name_by_invalid_data(web_browser, name):
 
 @pytest.mark.parametrize("password", settings.valid_passwords.values(), ids=settings.valid_passwords.keys())
 def test_password_by_valid_data(web_browser, password):
-    """TC-20 Форма «Регистрация»: проверка поля "Пароль" валидными данными (латиница+числа длиной 8,15,20)."""
+    """TC-20 Форма «Регистрация» поле "Пароль": позитивный тест (латиница+числа длиной 8,15,20)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -187,7 +187,7 @@ def test_password_by_valid_data(web_browser, password):
 
 @pytest.mark.parametrize("password", settings.valid_passwords.values(), ids=settings.valid_passwords.keys())
 def test_confirm_password_by_valid_data(web_browser, password):
-    """TC-20_1 Форма «Регистрация»: проверка поля "Подтвердить пароль" валидными данными (латиница+числа длиной 8,15,20)."""
+    """TC-20_1 Форма «Регистрация» поле "Подтвердить пароль": позитивный тест (латиница+числа длиной 8,15,20)."""
 
     page = RegPage(web_browser)
     page.open()
@@ -199,7 +199,7 @@ def test_confirm_password_by_valid_data(web_browser, password):
 
 @pytest.mark.parametrize("password", settings.invalid_passwords.values(), ids=settings.invalid_passwords.keys())
 def test_password_by_invalid_data(web_browser, password):
-    """TC-21 Форма «Регистрация»: проверка поля "Пароль" невалидными данными (длина 7,21, кириллица,прописные,строчные,буквы,цифры)"""
+    """TC-21 Форма «Регистрация» поле "Пароль": негативный тест (длина 7,21, кириллица,прописные,строчные,буквы,цифры)"""
 
     page = RegPage(web_browser)
     page.open()
@@ -212,7 +212,7 @@ def test_password_by_invalid_data(web_browser, password):
 
 @pytest.mark.parametrize("password", settings.invalid_passwords.values(), ids=settings.invalid_passwords.keys())
 def test_confirm_password_by_invalid_data(web_browser, password):
-    """TC-21_1 Форма «Регистрация»: проверка поля "Подтвердить пароль" невалидными данными (длина 7,21, кириллица,прописные,строчные,буквы,цифры)"""
+    """TC-21_1 Форма «Регистрация» поле "Подтвердить пароль": негативный тест (длина 7,21, кириллица,прописные,строчные,буквы,цифры)"""
 
     page = RegPage(web_browser)
     page.open()
