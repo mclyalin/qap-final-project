@@ -1,49 +1,197 @@
 import pytest
 
 from pages.reg_page import RegPage
-from settings import Settings, Expected
+from settings import RegPageExpected as expected
+from settings import Settings as settings
 
 
-def test_page_left_registration(web_browser):
-    """TC-11 Левая часть формы «Регистрация» содержит логотип и продуктовый слоган кабинета."""
+# def test_page_left_registration(web_browser):
+#     """TC-11 Левая часть формы «Регистрация» содержит логотип и продуктовый слоган кабинета."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     blank = ""
+
+#     assert page.left_section.get_text() is not blank
+
+
+# def test_elements_of_registr(web_browser):
+#     """TC-12 Форма «Регистрация» содержит основные элементы: поля ввода, кнопка отправки формы, ссылки на политику конфиденциальности и пользовательское соглашение."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+
+#     assert page.form.is_visible()
+#     assert page.input_first_name.is_clickable()
+#     assert page.input_last_name.is_clickable()
+#     assert page.select_region.is_clickable()
+#     assert page.input_email_phone.is_clickable()
+#     assert page.input_password.is_clickable()
+#     assert page.confirm_password.is_clickable()
+#     assert page.submit_button.is_clickable()
+#     assert page.policy_agreement_link.is_clickable()
+
+
+# def test_names_elements_of_registr(web_browser):
+#     """TC-13 Названия элементов формы «Регистрация» соответствуют Требованию."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+
+#     assert page.form_title.get_text() == expected.form_title_text
+#     assert page.first_name_placeholder.get_text() == expected.first_name_placeholder_text
+#     assert page.last_name_placeholder.get_text() == expected.last_name_placeholder_text
+#     assert page.select_region_placeholder.get_text() == expected.select_region_placeholder_text
+#     assert page.email_phone_placeholder.get_text() == expected.email_phone_placeholder_text
+#     assert page.password_placeholder.get_text() == expected.password_placeholder_text
+#     assert page.confirm_password_placeholder.get_text() == expected.confirm_password_placeholder_text
+#     assert page.submit_button.get_text() == expected.submit_button_name
+
+
+# def test_registr_by_valid_data(web_browser):
+#     """TC-14 Регистрация пользователя по email"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.register()
+
+#     assert page.register_confirm_title.get_text() == expected.confirm_email_title_text
+#     assert expected.confirm_email_description_text in page.register_confirm_description.get_text()
+
+
+# def test_registr_by_valid_data(web_browser):
+#     """TC-XX Регистрация пользователя по телефону"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.register(email_phone=settings.random_phone)
+
+#     assert page.register_confirm_title.get_text() == expected.confirm_phone_title_text
+#     assert expected.confirm_phone_description_text in page.register_confirm_description.get_text()
+
+
+# def test_registr_by_valid_data(web_browser):
+#     """TC-XX Регистрация пользователя с пустыми полями"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.submit_button.click()
+
+#     assert page.get_relative_path() == settings.register_page_path
+#     assert page.first_name_error.get_text() == expected.name_error_text
+#     assert page.last_name_error.get_text() == expected.name_error_text
+#     assert page.email_phone_error.get_text() == expected.email_phone_error_text
+#     assert page.password_error.get_text() in expected.password_error_texts
+#     assert page.confirm_password_error.get_text() in expected.password_error_texts
+
+
+# def test_registr_by_invalid_data(web_browser):
+#     """TC-16 Регистрация пользователя по уже зарегистрированному email"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.register(email_phone=settings.valid_email)
+
+#     assert page.get_relative_path() == settings.register_page_path
+#     assert page.modal.is_visible()
+#     assert page.modal_title.get_text() == expected.modal_title_text
+#     assert page.modal_login_button.is_clickable()
+#     assert page.modal_login_button.get_text() == expected.modal_button_name
+#     assert page.modal_restore_link.is_clickable()
+#     assert page.modal_restore_link.get_text() == expected.modal_restore_link_text
+
+
+# def test_registr_and_redir_auth(web_browser):
+#     """TC-17 Модальное окно формы "Регистрация": проверка редиректа на страницу "Авторизация" при нажатии кнопки 'Войти'"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.register(email_phone=settings.valid_email)
+#     page.modal_login_button.click()
+
+#     assert page.get_relative_path() == settings.auth_page_path
+
+
+# def test_registr_and_redir_auth(web_browser):
+#     """TC-XX Модальное окно формы "Регистрация": проверка редиректа на страницу "Восстановление пароля" по ссылке 'Восстановить пароль'"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.register(email_phone=settings.valid_email)
+#     page.modal_restore_link.click()
+
+#     assert page.get_relative_path() == settings.restore_password_page_path
+
+
+# @pytest.mark.parametrize("name", settings.valid_names.values(), ids=settings.valid_names.keys())
+# def test_first_name_by_valid_data(web_browser, name):
+#     """TC-18 Форма «Регистрация»: проверка поля "Имя" валидными данными (строки кириллицы длиной 2,3,15,29,30 символов,имя с тире)."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.input_first_name.send_keys(name)
+#     page.input_last_name.click()
+
+#     assert not page.first_name_error.is_presented()
+
+
+# @pytest.mark.parametrize("name", settings.invalid_names.values(), ids=settings.invalid_names.keys())
+# def test_first_name_by_valid_data(web_browser, name):
+#     """TC-19 Форма «Регистрация»: проверка поля "Имя" невалидными данными (кириллица длиной 1,31,500 символов,латиница,иероглифы,спецсимволы,числа)."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.input_first_name.send_keys(name)
+#     page.input_last_name.click()
+
+#     assert page.first_name_error.is_presented()
+#     assert page.first_name_error.get_text() == expected.name_error_text
+
+
+# @pytest.mark.parametrize("password", settings.valid_passwords.values(), ids=settings.valid_passwords.keys())
+# def test_first_name_by_valid_data(web_browser, password):
+#     """TC-20 Форма «Регистрация»: проверка поля "Пароль" валидными данными (латиница+числа длиной 8,15,20)."""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.input_password.send_keys(password)
+#     page.confirm_password.click()
+
+#     assert not page.password_error.is_presented()
+
+# @pytest.mark.parametrize("password", settings.invalid_passwords.values(), ids=settings.invalid_passwords.keys())
+# def test_passw_registration_confirm_valid_data(web_browser):
+#     """TC-21 Форма «Регистрация»: проверка поля "Пароль" невалидными данными ()"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.input_password.send_keys(password)
+#     page.confirm_password.click()
+
+#     assert page.password_error.is_presented()
+#     assert page.passeord_error.get_text() in expected.password_error_texts
+
+
+# @pytest.mark.parametrize("password", settings.invalid_passwords.values(), ids=settings.invalid_passwords.keys())
+# def test_passw_registration_confirm_valid_data(web_browser):
+#     """TC-XX Форма «Регистрация»: проверка поля "Подтвердить пароль" невалидными данными ()"""
+
+#     page = RegPage(web_browser)
+#     page.open()
+#     page.confirm_password.send_keys(password)
+#     page.input_password.click()
+
+#     assert page.confirm_password_error.is_presented()
+#     assert page.confirm_password_error.get_text() in expected.password_error_texts
+
+
+def test_passw_registration_confirm_invalid_data(web_browser):
+    """TC-22 Форма «Регистрация»: проверка полей "Пароль" и "Подтвердить пароль" (пароли несовпадают)"""
 
     page = RegPage(web_browser)
     page.open()
+    page.register(password=settings.valid_password, confirm_password=settings.valid_password[::-1])
 
-    blank = ""
-    assert page.left_section.get_text() is not blank
-
-
-def test_elements_of_registr(web_browser):
-    """TC-12 Блок регистрации формы «Регистрация» содержит основные элементы:
-    поля ввода: Имя, Фамилия, Регион, email, Пароль, Подтверждение пароля; кнопка "Продолжить"."""
-
-    page = RegPage(web_browser)
-    page.open()
-
-    assert page.form.is_visible()
-    assert page.form_title.get_text() == Expected.form_title_text
-    assert page.auth_select_menu.is_visible()
-    assert page.input_username.is_clickable()
-    assert page.input_password.is_clickable()
-    assert page.submit_button.is_clickable()
-    assert page.submit_button.get_text() == Expected.submit_button_name
-    assert page.forgot_password_link.is_clickable()
-    assert page.forgot_password_link.get_text() == Expected.forgot_password_link_text
-    assert page.register_link.is_clickable()
-    assert page.register_link.get_text() == Expected.register_link_text
-    # try:
-    #     page_reg = RegistrPage(selenium)
-    #     card_of_reg = [page_reg.first_name, page_reg.last_name, page_reg.address_registration,
-    #                    page_reg.email_registration, page_reg.passw_registration,
-    #                    page_reg.passw_registration_confirm, page_reg.registration_btn]
-    #     for i in range(len(card_of_reg)):
-    #         assert page_reg.first_name in card_of_reg
-    #         assert page_reg.last_name in card_of_reg
-    #         assert page_reg.email_registration in card_of_reg
-    #         assert page_reg.address_registration in card_of_reg
-    #         assert page_reg.passw_registration in card_of_reg
-    #         assert page_reg.passw_registration_confirm in card_of_reg
-    #         assert page_reg.registration_btn in card_of_reg
-    # except AssertionError:
-    #     print('Элемент отсутствует в форме «Регистрация»')
+    assert page.get_relative_path() == settings.register_page_path
+    assert page.confirm_password_error.is_presented()
+    assert page.confirm_password_error.get_text() == expected.confirm_password_error_text
