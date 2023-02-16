@@ -1,8 +1,8 @@
 import pytest
 
 from pages.reg_page import RegPage
-from settings import RegPageExpected as expected
 from settings import Settings as settings
+from tests.reg_page_expectations import RegPageExpectations as expected
 
 
 def test_page_left_section(web_browser):

@@ -1,8 +1,8 @@
 import pytest
 
 from pages.auth_page import AuthPage
-from settings import AuthPageExpected as expected
 from settings import Settings as settings
+from tests.auth_page_expectations import AuthPageExpectations as expected
 
 
 def test_page_right_section(web_browser):
