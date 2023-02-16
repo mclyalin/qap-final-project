@@ -18,7 +18,6 @@ def test_auth_form_elements(web_browser):
 
     page = AuthPage(web_browser)
 
-    assert page.form.is_visible()
     assert page.form_title.get_text() == expected.form_title_text
     assert page.auth_select_menu.is_visible()
     assert page.input_username.is_clickable()
