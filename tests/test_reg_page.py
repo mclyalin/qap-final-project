@@ -33,7 +33,7 @@ def test_reg_form_elements(web_browser):
 
 
 def test_form_elements_names(web_browser):
-    """TC-13 Названия элементов формы «Регистрация» соответствуют Требованиям."""
+    """TC-12_1 Названия элементов формы «Регистрация» соответствуют Требованиям."""
 
     page = RegPage(web_browser)
     page.open()
@@ -49,7 +49,7 @@ def test_form_elements_names(web_browser):
 
 
 def test_register_user_by_email(web_browser):
-    """TC-14 Регистрация пользователя по email"""
+    """TC-13 Регистрация пользователя по email"""
 
     page = RegPage(web_browser)
     page.open()
@@ -60,7 +60,7 @@ def test_register_user_by_email(web_browser):
 
 
 def test_register_user_by_phone(web_browser):
-    """TC-14_1 Регистрация пользователя по телефону"""
+    """TC-14 Регистрация пользователя по телефону"""
 
     page = RegPage(web_browser)
     page.open()
@@ -109,7 +109,7 @@ def test_modal_button_redirect_to_auth_page(web_browser):
     page.register(email_phone=settings.valid_email)
     page.modal_login_button.click()
 
-    assert page.get_relative_path() == settings.auth_page_path
+    assert page.get_relative_path() == settings.sign_in_error_path
 
 
 def test_modal_link_redirect_to_restore_page(web_browser):
