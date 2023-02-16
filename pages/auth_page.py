@@ -22,7 +22,7 @@ class AuthPage(WebPage):
 
     right_section = WebElement(id='page-right')
 
-    form = WebElement(css_selector='.login-form-container form.login-form')
+    form = WebElement(css_selector='#page-right form.login-form')
     form_title = WebElement(css_selector='.login-form-container h1')
     auth_select_menu = WebElement(css_selector='form.login-form .tabs-input-container__tabs')
     input_username = WebElement(id='username')
