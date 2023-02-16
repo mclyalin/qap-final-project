@@ -63,7 +63,7 @@ class Settings:
 class AuthPageExpected:
     slogan_text = "Персональный помощник в цифровом мире Ростелекома"
     form_title_text = "Авторизация"
-    submit_button_name = "Войти"
+    submit_button_name = "Зарегистрироваться"
     forgot_password_link_text = "Забыл пароль"
     register_link_text = "Зарегистрироваться"
     tab_names = ["Номер", "Почта", "Логин", "Лицевой счёт"]

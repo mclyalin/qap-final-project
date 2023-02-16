@@ -50,7 +50,7 @@ def test_menu_active_tab_by_default(web_browser):
 
 
 def test_username_placeholder_changes(web_browser):
-    """TC-05 В поле ввода username плейсхолдер меняется в соответствии с выбранным табом Меню."""
+    """TC-05 В поле ввода Типа авторизации плейсхолдер меняется в соответствии с выбранным табом Меню."""
 
     page = AuthPage(web_browser)
 
@@ -68,7 +68,7 @@ def test_username_placeholder_changes(web_browser):
 
 
 def test_forgot_password_link(web_browser):
-    """TC-06 Проверка перехода по ссылке 'Забыл пороль'."""
+    """TC-06 Проверка перехода по ссылке 'Забыл пароль'."""
 
     page = AuthPage(web_browser)
     page.forgot_password_link.click()
@@ -87,7 +87,7 @@ def test_register_link(web_browser):
 
 @pytest.mark.xfail(reason="Тест может упасть из-за появления капчи")
 def test_sign_in_by_valid_user(web_browser):
-    """TC-08 Аутентификация с валидными email и паролем."""
+    """TC-08 Авторизация с валидными email и паролем."""
 
     page = AuthPage(web_browser)
     page.sign_in(settings.valid_email, settings.valid_password)
@@ -97,7 +97,7 @@ def test_sign_in_by_valid_user(web_browser):
 
 @pytest.mark.xfail(reason="Тест может упасть из-за появления капчи")
 def test_sign_in_by_unknown_user(web_browser):
-    """TC-09 Аутентификация незарегистрированного пользователя"""
+    """TC-09 Авторизация незарегистрированного пользователя"""
 
     page = AuthPage(web_browser)
     page.sign_in(settings.random_email, settings.valid_password)
@@ -108,7 +108,7 @@ def test_sign_in_by_unknown_user(web_browser):
 
 
 def test_sign_in_by_blank_fields(web_browser):
-    """TC-10 Аутентификация с пустыми полями"""
+    """TC-10 Авторизация с пустыми полями"""
 
     page = AuthPage(web_browser)
     blank = ""
