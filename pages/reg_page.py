@@ -57,7 +57,7 @@ class RegPage(WebPage):
     register_confirm_description = WebElement(css_selector='.register-confirm-form-container p.register-confirm-form-container__desc')
 
     first_name_error = WebElement(xpath='//input[@name="firstName"]/ancestor::div[contains(@class,"error")]//span[contains(@class,"error")]')
-    last_name_error = WebElement(xpath='//input[@name="firstName"]/ancestor::div[contains(@class,"error")]//span[contains(@class,"error")]')
+    last_name_error = WebElement(xpath='//input[@name="lastName"]/ancestor::div[contains(@class,"error")]//span[contains(@class,"error")]')
     email_phone_error = WebElement(xpath='//div[contains(@class,"email-or-phone")]//span[contains(@class,"error")]')
     password_error = WebElement(xpath='//div[contains(@class,"__password")]//span[contains(@class,"error")]')
     confirm_password_error = WebElement(xpath='//div[contains(@class,"__confirmed-password")]//span[contains(@class,"error")]')
