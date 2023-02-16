@@ -1,5 +1,6 @@
 import pytest
 
+
 from pages.reg_page import RegPage
 from settings import Settings as settings
 from tests.reg_page_expectations import RegPageExpectations as expected

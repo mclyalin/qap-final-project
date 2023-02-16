@@ -1,6 +1,5 @@
 class RegPageExpectations:
     form_title_text = "Регистрация"
-
     first_name_placeholder_text = "Имя"
     last_name_placeholder_text = "Фамилия"
     select_region_placeholder_text = "Регион"
