@@ -10,7 +10,6 @@ class AuthPageExpectations:
     login_placeholder_text = "Логин"
     ls_placeholder_text = "Лицевой счёт"
 
-
     sign_in_error_text = "Неверный логин или пароль"
     email_error_text = "Введите адрес, указанный при регистрации"
     phone_error_text = "Введите номер телефона"

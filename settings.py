@@ -6,7 +6,6 @@ class Settings:
     restore_password_page_path = "/auth/realms/b2c/login-actions/reset-credentials"
     register_page_path = "/auth/realms/b2c/login-actions/registration"
 
-
     valid_email = "testbox@" + "fexbox.org"
     valid_password = "P48sLPm28SLwq" + "!J"
 

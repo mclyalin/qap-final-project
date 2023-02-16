@@ -1,6 +1,5 @@
 import pytest
 
-
 from pages.auth_page import AuthPage
 from settings import Settings as settings
 from tests.auth_page_expectations import AuthPageExpectations as expected
