@@ -1,4 +1,4 @@
-###### Итоговый учебный проект курса QAP ([Skillfactory](https://lms.skillfactory.ru/courses/course-v1:SkillFactory+INTQAP+2022/course/))
+###### Итоговый учебный проект курса QAP ([Skillfactory](https://skillfactory.ru))
 ### Тестирование нового интерфейса страницы авторизации Ростелеком.  
 
 В проекте применялись следующие инструменты:
